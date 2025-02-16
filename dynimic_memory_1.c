@@ -12,7 +12,7 @@ int main() {
 	
 	p = malloc(32);
 	pp = malloc(32);
-	ppp = malloc(32);
+	ppp = malloc(64);
 
 	scanf("%d", &p);
 	scanf("%s", pp);
