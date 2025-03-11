@@ -4,4 +4,4 @@
 * Learn
 * Code along
 * Contribute
-* * Have fun
+* Have fun
