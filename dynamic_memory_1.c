@@ -10,7 +10,7 @@ int test_function() {
 	scanf("%d", variable);
 
 	free(variable);
-	return variable;
+	return *variable;
 }
 int main() {
 	int *p;
@@ -26,10 +26,16 @@ int main() {
 	pp = malloc(32);
 	ppp = malloc(64);
 
+	printf("Geben Sie zuerst eine intiger ein: \t");
 	scanf("%d", &p);
+
+	printf("Geben Sie als zweites einen, bis zu 32 Charaktere langen, Text ein: \t");
 	scanf("%s", pp);
+
+	printf("Geben Sie als drittte Eingabe eine Float ein: \t");
 	scanf("%f", &ppp);
 
+	printf("Geben Sie nun als letzte Eingabe eine weitere Intiger ein: \t");
 	*pppp = test_function();
 	printf("%d, %s, %f, %d, %p, %p, %p, %p\n", p, pp, ppp, pppp, &p, &pp, &ppp, &pppp);
 
