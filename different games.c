@@ -12,6 +12,10 @@ int Zahlenspiel() {
 		printf("Erraten Sie die Zahl");
 		scanf("%d", eingabe_zahlenspiel);
 		trys = trys++;
+		switch(eingabe_zahlenspiel) {
+			case eingabe_zahlenspiel<value:
+			printf("\tDie Zahl ist zu niedrig);
+				break;
 	}
 	while (eingabe_zahlenspiel != value)
 	return trys;	
@@ -29,7 +33,7 @@ int test_function() {
 	return *variable;
 }
 int main() {
-	int *p, eingabe, *pppp, random_zahl;
+	int *p, eingabe, *pppp, trys;
 	char *pp;
 	float *ppp;
 
@@ -63,7 +67,7 @@ int main() {
 	free(ppp);
 	}
 	else {
-		Zahlenspiel();
+		trys = Zahlenspiel();
 	}
 	return 0;
 }
