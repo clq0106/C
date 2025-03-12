@@ -4,9 +4,9 @@
 
 int Zahlenspiel() {
 	int N, eingabe_zahlenspiel;
-	int trys = 0
+	int trys = 0;
 	printf("Dieses Zahlen raten Spiel hat als Untergrenze 0, geben Sie eine Eingabe fuer das obere Ende: \t");
-	sacnf("%d", &N);
+	scanf("%d", &N);
 	int value = rand() % (N + 1);
 	do {
 		printf("Erraten Sie die Zahl");
@@ -23,7 +23,7 @@ int Zahlenspiel() {
 				printf("Sie haben die Zahl gefunden");
 				break;
 				}
-	} while (eingabe_zahlenspiel != value)
+	} while (eingabe_zahlenspiel != value);
 	return trys;	
 }
 int main() {
