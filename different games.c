@@ -14,10 +14,14 @@ int Zahlenspiel() {
 		trys = trys++;
 		switch(eingabe_zahlenspiel) {
 			case eingabe_zahlenspiel<value:
-				printf("\tDie Zahl ist zu niedrig);
+				printf("\tDie Zahl ist zu niedrig");
 				break;
 			case eingabe_zahlenspiel>value:
-				printf("
+				printf("\tDie Zahl ist yu hoch");
+				break;
+			case eingabe == value:
+				printf("Sie haben die Zahl gefunden");
+				break;
 				}
 	} while (eingabe_zahlenspiel != value)
 	return trys;	
