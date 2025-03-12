@@ -1,5 +1,21 @@
 #include <stdlib.h>
 #include <stdio.h>
+#include <math.h>
+
+int Zahlenspiel() {
+	int N, eingabe_zahlenspiel;
+	int trys = 0
+	printf("Dieses Zahlen raten Spiel hat als Untergrenze 0, geben Sie eine Eingabe fuer das obere Ende: \t");
+	sacnf("%d", &N);
+	int value = rand() % (N + 1);
+	do {
+		printf("Erraten Sie die Zahl");
+		scanf("%d", eingabe_zahlenspiel);
+		trys = trys++;
+	}
+	while (eingabe_zahlenspiel != value)
+	return trys;	
+}
 
 int test_function() {
 	variable = 0;
@@ -13,15 +29,18 @@ int test_function() {
 	return *variable;
 }
 int main() {
-	int *p;
+	int *p, eingabe, *pppp, random_zahl;
 	char *pp;
 	float *ppp;
-	int *pppp;
 
 	p = 0;
 	pp = 0;
 	ppp = 0;
 
+	printf("Geben Sie die Zahl "1" ein im Falle, das Sie spielen wollen und eine beliebig andere Zahl wenn sie ein Zahlen-Spiel spielen wollen");
+	scanf("%d", &eingabe);
+	
+	if(eingabe == 1) {
 	p = malloc(32);
 	pp = malloc(32);
 	ppp = malloc(64);
@@ -42,8 +61,10 @@ int main() {
 	free(p);
 	free(pp);
 	free(ppp);
-
-
+	}
+	else {
+		Zahlenspiel();
+	}
 	return 0;
 }
 	
