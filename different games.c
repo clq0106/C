@@ -13,13 +13,13 @@ int Zahlenspiel() {
 		scanf("%d", eingabe_zahlenspiel);
 		trys = trys++;
 		switch(eingabe_zahlenspiel) {
-			case eingabe_zahlenspiel<value:
+			case (eingabe_zahlenspiel<value):
 				printf("\tDie Zahl ist zu niedrig");
 				break;
-			case eingabe_zahlenspiel>value:
+			case (eingabe_zahlenspiel>value):
 				printf("\tDie Zahl ist yu hoch");
 				break;
-			case eingabe == value:
+			case (eingabe == value):
 				printf("Sie haben die Zahl gefunden");
 				break;
 				}
