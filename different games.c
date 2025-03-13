@@ -13,7 +13,7 @@ int Zahlenspiel() {
 		scanf("%d", eingabe_zahlenspiel);
 		trys = trys++;
 		eingabe_zahlenspiel = switch_variable;
-		switch(eingabe_zahlenspiel) {
+/*		switch(eingabe_zahlenspiel) {
 			case(eingabe_zahlenspiel<value):
 				printf("\tDie Zahl ist zu niedrig");
 				break;
@@ -23,7 +23,17 @@ int Zahlenspiel() {
 			case(eingabe_zahlenspiel == value):
 				printf("Sie haben die Zahl gefunden");
 				break;
-				}
+				} 
+*/
+		if(eingabe_zahlenspiel < value) {
+			printf("\tDie Zahl ist zu klein");
+		}
+		if(eingabe_zahlenspiel > value) {
+			printf("\tDie Zahl ist zu gross");
+		}
+		if(eingabe_zahlenspiel == value) {
+			printf("\tSie haben die Zahl gefunden");
+		}
 	} while (eingabe_zahlenspiel != value);
 	return trys;	
 }
