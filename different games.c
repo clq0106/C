@@ -3,7 +3,7 @@
 #include <math.h>
 
 int Zahlenspiel() {
-	int N, eingabe_zahlenspiel;
+	int N, eingabe_zahlenspiel, *tmp;
 	int trys = 0;
 	printf("Dieses Zahlen raten Spiel hat als Untergrenze 0, geben Sie eine Eingabe fuer das obere Ende: \n");
 	scanf("%d", &N);
@@ -13,10 +13,18 @@ int Zahlenspiel() {
 		scanf("%d", &eingabe_zahlenspiel);
 		trys = trys+1;
 		if(eingabe_zahlenspiel < value) {
-			printf("\nDie Zahl ist zu klein\t\t\ttry:%d\n",trys);
+			tmp=malloc(32);
+			*tmp=&trys;
+			tmp+1;
+			printf("\nDie Zahl ist zu klein\t\t\ttry:%d\n", *ptr);
+			free(tmp);
 		}
 		if(eingabe_zahlenspiel > value) {
-			printf("\nDie Zahl ist zu gross\t\t\ttry:%d\n",trys);
+			tmp=malloc(32);
+			*tmp=&trys;
+			tmp+1;
+			printf("\nDie Zahl ist zu gross\t\t\ttry:%d\n",*ptr;
+			free(tmp);
 		}
 		if(eingabe_zahlenspiel == value) {
 			printf("\nSie haben die Zahl gefunden\n");
