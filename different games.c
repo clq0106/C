@@ -12,7 +12,6 @@ int Zahlenspiel() {
 		printf("Erraten Sie die Zahl");
 		scanf("%d", eingabe_zahlenspiel);
 		trys = trys++;
-		eingabe_zahlenspiel = switch_variable;
 /*		switch(eingabe_zahlenspiel) {
 			case(eingabe_zahlenspiel<value):
 				printf("\tDie Zahl ist zu niedrig");
