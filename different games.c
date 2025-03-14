@@ -11,12 +11,12 @@ int Zahlenspiel() {
 	do {
 		printf("Erraten Sie die Zahl: \t");
 		scanf("%d", &eingabe_zahlenspiel);
-		trys = trys++;
+		trys = trys+1;
 		if(eingabe_zahlenspiel < value) {
-			printf("\nDie Zahl ist zu klein\n");
+			printf("\nDie Zahl ist zu klein\t\t\ttry:%d\n",trys);
 		}
 		if(eingabe_zahlenspiel > value) {
-			printf("\nDie Zahl ist zu gross\n");
+			printf("\nDie Zahl ist zu gross\t\t\ttry:%d\n",trys);
 		}
 		if(eingabe_zahlenspiel == value) {
 			printf("\nSie haben die Zahl gefunden\n");
