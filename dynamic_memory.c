@@ -39,7 +39,7 @@ int main(int argc, char *argv[]) {
 
 	printf("Geben Sie nun als letzte Eingabe eine weitere Intiger ein: \t");
 	*pppp = test_function();
-	printf("%d, %s, %f, %d, %p, %p, %p, %p\n", p, pp, ppp, pppp, &p, &pp, &ppp, &pppp);
+	printf("%d, %s, %f, %d, %p, %p, %p, %p\n", *p, *pp, *ppp, *pppp, &p, &pp, &ppp, &pppp);
 
 	free(p);
 	free(pp);
