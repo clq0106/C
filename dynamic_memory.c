@@ -34,7 +34,7 @@ int main() {
 	printf("Geben Sie als zweites einen, bis zu 32 Charaktere langen, Text ein: \t");
 	scanf("%s", pp);
 
-	printf("Geben Sie als drittte Eingabe eine Float ein: \t");
+	printf("Geben Sie als dritte Eingabe eine Float ein: \t");
 	scanf("%f", &ppp);
 
 	printf("Geben Sie nun als letzte Eingabe eine weitere Intiger ein: \t");
