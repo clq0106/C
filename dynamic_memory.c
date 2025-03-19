@@ -12,7 +12,7 @@ int test_function() {
 	free(variable);
 	return *variable;
 }
-int main() {
+int main(int argc, char *argv[]) {
 	int *p, *pppp;
 	char *pp;
 	float *ppp;
