@@ -32,7 +32,7 @@ int Zahlenspiel() {
 	} while (eingabe_zahlenspiel != value);
 	return trys;	
 }
-int main() {
+int main(int argc, char *argv[]) {
 	int  trys;
 	trys = Zahlenspiel();
 	printf("Die Anzahl von Versuchen die Sie gebraucht haben: %d\n",trys);
