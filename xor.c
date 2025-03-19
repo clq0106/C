@@ -2,7 +2,7 @@
 
 #define KEY 'X';
 
-int main() {
+int main(int argc, char *argv[]) {
 	char key, ciphertext[32], newciphertext;
 	int index;
 
