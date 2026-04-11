@@ -2,6 +2,7 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stdint.h>
+#include <assert.h>
 
 typedef int8_t i8;
 typedef int16_t i16;
@@ -16,6 +17,11 @@ typedef uint64_t u64;
 typedef float f32;
 typedef double f64;
 
+struct user {
+	char benutzername[20];
+	f32 eingabe_ausgabe[20];
+};
+
 struct molecular_particle {
 	char name[10];
 	f32 Masse;
@@ -24,6 +30,7 @@ struct molecular_particle {
 
 int function() {
 
+	printf("\n----------------------------------------------------------------------------------------------\n\n");
 	char e;
 	printf("Welches Atomteilchen würden Sie gerne aufrufen\n");
 	printf("\nFür Proton: \tp\nFür Neutron: \tn\nFür Elektron: \te\nIhre Eingabe: \t");
@@ -35,51 +42,83 @@ int function() {
 	struct molecular_particle proton = {"proton", 1.0073, 1.6};
 	struct molecular_particle electron = {"electron",0.00055, 1.6 };
 
-
-	if(e == 'n') {
+	switch (e) {
+		case 'n':
 		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.4f\nDie Ladung in C: %.4f\n",&neutron.name, neutron.Masse, neutron.Ladung);
-	}
-	if(e == 'p') {
+		break;
+
+		case 'p':
 		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.4f\nDie Ladung in C: +%.4f*10^-19\n",&proton.name, proton.Masse, proton.Ladung);
-	}
-	if(e == 'e') {
+		break;
+
+		case 'e':
 		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.5f\nDie Ladung in C: -%.4f*10^-19\n",&electron.name, electron.Masse, electron.Ladung);
+		break;
+
+		default:
+		break;
 	}
-//	else 
-//		break;
-
-
-
 	return 0;
 }
 
-f64 converter() {
+f64 converter(f32* eingabe, f32* ausgabe) {
 	
 	u32 input_number, converted_number;
 	u8 a;
 
+	printf("\n----------------------------------------------------------------------------------------------\n");
 	printf("Sie befinden sich in dem Converter, möchten Sie von u in kg umrechen (1), oder von kg in u (2)\n");
 	scanf("%hhd", &a);
 
-	if (a == '1') {
+	assert(eingabe);
+	assert(ausgabe);
+
+	if (a == 1) {
 		f32 zz;
-		printf("Geben Sie die Masse in u ein: \t");
-		scanf("%e", &zz);
+		printf("\nGeben Sie die Masse in u ein: \t");
+		scanf(" %f", &zz);
+		
+		f32 yy = zz*1.6605;
+		printf("Ihre Eingegebene Zahl:\t%fu\nDie umgerechnete Zahl:\t%fe-27\n",zz,yy );
+//Nullstellen nachzählen
+	*eingabe = zz;
+	*ausgabe = yy;
 	}
 
+	if (a == 2) {
+		f32 zz;
+		printf("\nGeben Sie die Masse in kg ein: \t");
+		scanf(" %f", &zz);
+
+		f32 yy = zz/1.6605;
+		printf("Ihre eingegebene Zahl:\t%fu\nDie umgerechnete Zahl:\t%fe-27\n",zz,yy);
+	}
 	return converted_number;
 }
 
 int main() {
 	
+	char name_benutzer[20];
 	u8 input;
+	f32 eingabe, ausgabe;
 
-	printf("Welche Funktion würden Sie gerne aufrufen?\nProton/Elektron/Neutron = 1:\nIhre Eingabe: \t");
-	scanf("%hhd", &input);
-	
-	if (input == 1) {
-	function();
+	printf("Bitte geben Sie Ihren Namen ein, damit Ihre Daten gespeichert werden: \nIhre Eingabe: \t");
+	if (scanf("%s",name_benutzer) != 1) {
+		printf("Input error\n");
+		return 1;
 	}
-	
+	printf("\n\n\t\tHallo %s\n\n\n\n\n",name_benutzer);
+
+	printf("Welche Funktion würden Sie gerne aufrufen?\nProton/Elektron/Neutron = 1:\nConverter: Elementareinheit u <-> kg = 2\n\nIhre Eingabe: \t");
+	scanf("%hhd", &input);
+
+	switch (input) {
+		case 1: function();
+		break;
+
+		case 2: converter(&eingabe, &ausgabe);
+		break;
+	}
+//	struct user benutzer1 = {name_benutzer};
 	return 0;
 }
