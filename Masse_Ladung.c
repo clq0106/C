@@ -17,16 +17,25 @@ typedef uint64_t u64;
 typedef float f32;
 typedef double f64;
 
-struct user {
+typedef struct user {
 	char benutzername[20];
 	f32 eingabe_ausgabe[20];
-};
+}User;
 
 struct molecular_particle {
 	char name[10];
 	f32 Masse;
 	f32 Ladung;
 };
+
+struct Konstanten {
+	char Konstanten_Name[20];
+	f32 Konstanten_Wert;
+};
+
+int Konstanten_Glossar() {
+	return 0;
+}
 
 int function() {
 
@@ -43,16 +52,19 @@ int function() {
 	struct molecular_particle electron = {"electron",0.00055, 1.6 };
 
 	switch (e) {
+		case 'N':
 		case 'n':
-		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.4f\nDie Ladung in C: %.4f\n",&neutron.name, neutron.Masse, neutron.Ladung);
+		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.4f\nDie Ladung in C: %.4f\n",neutron.name, neutron.Masse, neutron.Ladung);
 		break;
 
+		case 'P':
 		case 'p':
-		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.4f\nDie Ladung in C: +%.4f*10^-19\n",&proton.name, proton.Masse, proton.Ladung);
+		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.4f\nDie Ladung in C: +%.4f*10^-19\n",proton.name, proton.Masse, proton.Ladung);
 		break;
 
+		case 'E':
 		case 'e':
-		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.5f\nDie Ladung in C: -%.4f*10^-19\n",&electron.name, electron.Masse, electron.Ladung);
+		printf("Ihr atomares Teilchen: %s\n\nDie Masse in u: %.5f\nDie Ladung in C: -%.4f*10^-19\n",electron.name, electron.Masse, electron.Ladung);
 		break;
 
 		default:
@@ -79,7 +91,7 @@ f64 converter(f32* eingabe, f32* ausgabe) {
 		scanf(" %f", &zz);
 		
 		f32 yy = zz*1.6605;
-		printf("Ihre Eingegebene Zahl:\t%fu\nDie umgerechnete Zahl:\t%fe-27\n",zz,yy );
+		printf("Ihre Eingegebene Zahl:\t%fu\nDie umgerechnete Zahl:\t%fe-27 kg\n",zz,yy );
 //Nullstellen nachzählen
 	*eingabe = zz;
 	*ausgabe = yy;
@@ -91,16 +103,17 @@ f64 converter(f32* eingabe, f32* ausgabe) {
 		scanf(" %f", &zz);
 
 		f32 yy = zz/1.6605;
-		printf("Ihre eingegebene Zahl:\t%fu\nDie umgerechnete Zahl:\t%fe-27\n",zz,yy);
+		printf("Ihre eingegebene Zahl:\t%fu\nDie umgerechnete Zahl:\t%f\n",zz,yy);
 	}
 	return converted_number;
 }
 
 int main() {
 	
-	char name_benutzer[20];
+	char qq, name_benutzer[20];
 	u8 input;
 	f32 eingabe, ausgabe;
+	User Benutzer1;
 
 	printf("Bitte geben Sie Ihren Namen ein, damit Ihre Daten gespeichert werden: \nIhre Eingabe: \t");
 	if (scanf("%s",name_benutzer) != 1) {
@@ -109,7 +122,7 @@ int main() {
 	}
 	printf("\n\n\t\tHallo %s\n\n\n\n\n",name_benutzer);
 
-	printf("Welche Funktion würden Sie gerne aufrufen?\nProton/Elektron/Neutron = 1:\nConverter: Elementareinheit u <-> kg = 2\n\nIhre Eingabe: \t");
+	printf("Welche Funktion würden Sie gerne aufrufen?\n\n1 = Proton/Elektron/Neutron\n\n2 = Converter: Elementareinheit u <-> kg\n\n\nIhre Eingabe: \t");
 	scanf("%hhd", &input);
 
 	switch (input) {
@@ -119,6 +132,11 @@ int main() {
 		case 2: converter(&eingabe, &ausgabe);
 		break;
 	}
-//	struct user benutzer1 = {name_benutzer};
+	Benutzer1 = (User) {.benutzername = *name_benutzer, .eingabe_ausgabe[0] = eingabe, .eingabe_ausgabe[1] = ausgabe};
+	
+	scanf(" %c",&qq);
+	if (qq == 'h') {
+		printf("History von %s: \nLetzte Eingabe:\t%f\nLetzte Ausgabe:\t%f\n",name_benutzer, Benutzer1.eingabe_ausgabe[0], Benutzer1.eingabe_ausgabe[1]);
+	}
 	return 0;
 }
