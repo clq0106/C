@@ -1,49 +1,61 @@
-#include <stdio.h>
-#include <stdlib.h>
 
-int test_function() {
-	variable = 0;
+ #include <stdio.h>
+        #include <stdlib.h>
 
-	variable = malloc(32);
-	
-	prtinf("Dies ist eine seperate fundtion, geben sie bitte eine int ein: \t");
-	scanf("%d", variable);
+        int test_function() {
+            int *pVariable = 0;
 
-	free(variable);
-	return *variable;
-}
-int main(int argc, char *argv[]) {
-	int *p, *pppp;
-	char *pp;
-	float *ppp;
+            pVariable = (int*) calloc(5, sizeof(int));
+            
+            printf("Dies ist eine seperate fundtion, geben sie bitte eine int ein: \t");
+            scanf("%d", &pVariable);
 
-	p = 0;
-	pp = 0;
-	ppp = 0;
+            free(pVariable);
+            return *pVariable;
+        } 
+        int main(int argc, char *argv[]) {
+            int *p, *pppp, n = 5;
+            char *pp, eingabe;
+            float *ppp, *ppppp;
 
-	printf("Geben Sie die Zahl "1" ein im Falle, das Sie spielen wollen und eine beliebig andere Zahl wenn sie ein Zahlen-Spiel spielen wollen");
-	scanf("%d", &eingabe);
-	
-	p = malloc(32);
-	pp = malloc(32);
-	ppp = malloc(64);
+            p = 0;
+            pp = 0;
+            ppp = 0;
+            pppp = 0;
+            ppppp = 0;
 
-	printf("Geben Sie zuerst eine intiger ein: \t");
-	scanf("%d", &p);
+            printf("Geben Sie die Zahl '1' ein im Falle, dass Sie spielen wollen und eine beliebig andere Zahl wenn sie ein Zahlen-Spiel spielen wollen");
+            scanf("%d", &eingabe);
+            
+            p = malloc(n * sizeof(int));
+            pp = malloc(n * sizeof(char));
+            ppp = malloc(n * sizeof(float));
 
-	printf("Geben Sie als zweites einen, bis zu 32 Charaktere langen, Text ein: \t");
-	scanf("%s", pp);
+            if (!(ppppp = (int *)malloc(sizeof(float))))
+            {
+                exit (101);
+            }
+            
 
-	printf("Geben Sie als dritte Eingabe eine Float ein: \t");
-	scanf("%f", &ppp);
+            printf("Geben Sie zuerst eine intiger ein: \t");
+            scanf("%d", &p);
 
-	printf("Geben Sie nun als letzte Eingabe eine weitere Intiger ein: \t");
-	*pppp = test_function();
-	printf("%d, %s, %f, %d, %p, %p, %p, %p\n", *p, *pp, *ppp, *pppp, &p, &pp, &ppp, &pppp);
+            printf("Geben Sie als zweites einen, bis zu 32 Charaktere langen, Text ein: \t");
+            scanf("%s", pp);
 
-	free(p);
-	free(pp);
-	free(ppp);
+            printf("Geben Sie als dritte Eingabe eine Float ein: \t");
+            scanf("%f", &ppp);
 
-	return 0;
-}
+            printf("Geben Sie nun als letzte Eingabe eine weitere Intiger ein: \t");
+
+        *pppp = test_function();
+
+            printf("%d, %s, %f, %d, %p, %p, %p, %p\n", *p, *pp, *ppp, *pppp, &p, &pp, &ppp, &pppp);
+
+            free(p);
+            free(pp);
+            free(ppp);
+            free(pppp);
+
+            return 0;
+        }
