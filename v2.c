@@ -133,16 +133,14 @@ f64 converter(f32* eingabe, f32* ausgabe) {
 	return converted_number;
 }
 
-void history() {
+void history(char qq) {
 	struct user Benutzer1;
 	f32 eingabe, ausgabe;
-	char qq;
+	char name_benutzer[20];
+//	char qq = pruefung;
 
 	Benutzer1 = (User) {.benutzername = *name_benutzer, .eingabe_ausgabe[0] = eingabe, .eingabe_ausgabe[1] = ausgabe};
-	 
-	//history von Ein- und Ausgabe kann eingezeigt werden (Daten aus dem Converter
-	printf("Um History anzuzeigen, drücke 'h', um das Programm zu schließen drücke eine beliebige Taste\nIhre Eingabe:\t");
-	scanf(" %c",&qq);
+
 	if (qq == 'h') {
 		printf("\n\nHistory von %s: \nLetzte Eingabe:\t%f\nLetzte Ausgabe:\t%f\n",name_benutzer, Benutzer1.eingabe_ausgabe[0], Benutzer1.eingabe_ausgabe[1]);
 	}
@@ -168,8 +166,13 @@ int functionsaufrufer(f32 *eingabe, f32 *ausgabe){
 		break;
 	}
 
-	printf("Funktion Beenden = 'q'\nWeiter nutzen = beliebiger Input\n\n");
+	printf("Funktion Beenden = 'q'\nWeiter nutzen = beliebiger Input\nHistory ausdrucken = 'h'\n\n");
 	scanf(" %c",&pruefung);
+	if ( (char) pruefung == 'h')
+	{
+		history(pruefung);
+	}
+	
 	} while (pruefung != 'q');
 
 	*eingabe = eingabe_test;
