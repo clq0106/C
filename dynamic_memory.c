@@ -1,17 +1,20 @@
 
  #include <stdio.h>
         #include <stdlib.h>
+        #include <assert.h>
 
-        int test_function() {
+        int test_function(int* pppp) {
             int *pVariable = 0;
+
+            assert(pppp);
 
             pVariable = (int*) calloc(5, sizeof(int));
             
-            printf("Dies ist eine seperate fundtion, geben sie bitte eine int ein: \t");
+            printf("\n\nDies ist eine seperate fundtion, geben sie bitte eine int ein: \t");
             scanf("%d", &pVariable);
-
+            *pppp = pVariable;
             free(pVariable);
-            return *pVariable;
+            return 0;
         } 
         int main(int argc, char *argv[]) {
             int *p, *pppp, n = 5;
@@ -24,31 +27,27 @@
             pppp = 0;
             ppppp = 0;
 
-            printf("Geben Sie die Zahl '1' ein im Falle, dass Sie spielen wollen und eine beliebig andere Zahl wenn sie ein Zahlen-Spiel spielen wollen");
-            scanf("%d", &eingabe);
-            
             p = malloc(n * sizeof(int));
             pp = malloc(n * sizeof(char));
             ppp = malloc(n * sizeof(float));
 
-            if (!(ppppp = (int *)malloc(sizeof(float))))
+            if (!(ppppp = (float *) malloc(n * sizeof(float))))
             {
                 exit (101);
             }
-            
 
-            printf("Geben Sie zuerst eine intiger ein: \t");
+            printf("\n\nGeben Sie zuerst eine intiger ein: \t");
             scanf("%d", &p);
 
-            printf("Geben Sie als zweites einen, bis zu 32 Charaktere langen, Text ein: \t");
+            printf("\nGeben Sie als zweites einen, bis zu 32 Charaktere langen, Text ein: \t");
             scanf("%s", pp);
 
-            printf("Geben Sie als dritte Eingabe eine Float ein: \t");
+            printf("\nGeben Sie als dritte Eingabe eine Float ein: \t");
             scanf("%f", &ppp);
 
-            printf("Geben Sie nun als letzte Eingabe eine weitere Intiger ein: \t");
+            printf("\nGeben Sie nun als letzte Eingabe eine weitere float ein: \t");
 
-        *pppp = test_function();
+            test_function(*pppp);
 
             printf("%d, %s, %f, %d, %p, %p, %p, %p\n", *p, *pp, *ppp, *pppp, &p, &pp, &ppp, &pppp);
 
@@ -56,6 +55,7 @@
             free(pp);
             free(ppp);
             free(pppp);
+            free(ppppp);
 
             return 0;
         }
