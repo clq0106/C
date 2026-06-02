@@ -127,9 +127,8 @@ f64 converter(f32* eingabe, f32* ausgabe) {
 	return converted_number;
 }
 
-int history() {
+int history(f32 *eingabe, f32 *ausgabe) {
 	struct user Benutzer1;
-	f32 eingabe, ausgabe;
 	
 	struct user *eins = NULL;
     struct user *zwei = NULL;
@@ -137,8 +136,8 @@ int history() {
 	struct user *vier = NULL;
 
 	eins = (struct user *)malloc(sizeof(struct user));
-    zwei = (struct user *)malloc(sizeof(struct user));
-    drei = (struct user *)malloc(sizeof(struct user));
+	zwei = (struct user *)malloc(sizeof(struct user));
+   	drei = (struct user *)malloc(sizeof(struct user));
 	vier = (struct user *)malloc(sizeof(struct user));
 
 	if (!eins || !zwei || !drei || !vier) {
@@ -146,18 +145,30 @@ int history() {
         return 1;
     }
 
-	eins->data = 1;
+	eins->data = *eingabe;
     eins->next = zwei;
 
-    zwei->data = 2;
-    zwei->next = drei;
-
+    zwei->data = *ausgabe;
+    zwei->next = NULL;
+/*
+	Längere Einträge ermöglichen?
     drei->data = 3;
     drei->next = vier;
 
 	vier->data = 4;
     vier->next = NULL;
+*/
+	struct Node *temp = eins;
+	
+	if (*temp = eins){
+	printf("Eingabe: %f", temp->data);
+	temp = temp->next;
+}
 
+	else{
+	printf("Ausgabe: %f", temp->data);
+}
+	
 	return 0;
 }
 
@@ -165,10 +176,10 @@ int functionsaufrufer(){
 
 	char pruefung;
 	u8 input;
-//	f32 eingabe_test = *eingabe, ausgabe_test = *ausgabe;
+	f32 eingabe_test, ausgabe_test;
 	f32 eingabe, ausgabe;
 
-	f32 *pEingabe = eingabe, *pAusgabe = ausgabe;
+	f32 *pEingabe = &eingabe, *pAusgabe = &ausgabe;
 
 	do
 	{
@@ -179,7 +190,7 @@ int functionsaufrufer(){
 		case 1: function();
 		break;
 
-		case 2: converter(f32 &eingabe, f32 &ausgabe);
+		case 2: converter(&eingabe, &ausgabe);
 		break;
 	}
 
@@ -187,14 +198,14 @@ int functionsaufrufer(){
 	scanf(" %c",&pruefung);
 	if ( (char) pruefung == 'h')
 	{
-		history(f32 &eingabe, f32 &ausgabe);
+		history(&eingabe, &ausgabe);
 	}
 	
 	} while (pruefung != 'q');
-
-	*eingabe = eingabe_test;
-	*ausgabe = ausgabe_test;
-	
+/*
+	f32 *eingabe = &eingabe_test;
+	f32 *ausgabe = &ausgabe_test;
+*/	
 	return 0;
 }
 
