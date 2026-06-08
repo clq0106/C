@@ -158,16 +158,13 @@ int history(f32 *eingabe, f32 *ausgabe) {
 	vier->data = 4;
     vier->next = NULL;
 */
-	struct Node *temp = eins;
-	
-	if (*temp = eins){
-	printf("Eingabe: %f", temp->data);
-	temp = temp->next;
-}
-
-	else{
-	printf("Ausgabe: %f", temp->data);
-}
+    struct user *temp = eins;
+    while (temp != NULL)
+    {
+        printf("%d -> ", temp->data);
+        temp = temp->next;
+    }
+    printf("NULL\n");
 	
 	return 0;
 }
